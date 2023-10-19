@@ -1,3 +1,31 @@
+import subprocess
+import sys
+
+required_packages = [
+    "streamlit",
+    "pandas",
+    "scikit-learn",
+    "matplotlib"
+]
+
+def install_required_packages():
+    missing_packages = []
+    for package in required_packages:
+        try:
+            __import__(package)
+        except ImportError:
+            missing_packages.append(package)
+
+    if missing_packages:
+        print("Installing missing packages...")
+        for package in missing_packages:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+        print("All required packages installed.")
+    else:
+        print("All required packages are already installed.")
+
+install_required_packages()
+
 import streamlit as st
 import pandas as pd
 from sklearn.model_selection import train_test_split
