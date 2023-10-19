@@ -18,7 +18,7 @@ rtwo = r2_score(y_test, y_prediction)
 year_numeric = st.number_input("Enter a Numeric Year", min_value=2000)
 if year_numeric >= 2000:
     predicted_students = model.predict([[year_numeric, 0, 0, 0, 0]])[0]
-    st.write(f"Predicted Number of Students for {year_numeric}: {predicted_students:.2f}")
+    st.write(f"Predicted Number of Students for {year_numeric}: {predicted_students:.0f}")
     fig, ax = plt.subplots()
     x_values = X_test['No_student']
     bar_width = 0.1
